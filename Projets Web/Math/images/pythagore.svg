@@ -1,0 +1,18 @@
+<svg width="350" height="250" xmlns="http://www.w3.org/2000/svg">
+  <!-- Triangle -->
+  <line x1="60" y1="190" x2="60" y2="50" stroke="black" stroke-width="2"></line>
+  <line x1="60" y1="190" x2="260" y2="190" stroke="black" stroke-width="2"></line>
+  <line x1="60" y1="50" x2="260" y2="190" stroke="black" stroke-width="2"></line>
+
+  <!-- Angle droit -->
+  <path d="M60 175 L75 175 L75 190" fill="none" stroke="black" stroke-width="2"></path>
+
+  <!-- Sommets -->
+  <text x="48" y="205" font-size="18">A</text>
+  <text x="48" y="42" font-size="18">B</text>
+  <text x="266" y="205" font-size="18">C</text>
+
+  <!-- Mesures -->
+  <text x="15" y="120" font-size="16">6 cm</text>
+  <text x="135" y="212" font-size="16">8 cm</text>
+</svg>

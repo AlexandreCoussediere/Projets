@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+}
+
+.calculator {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 300px;
+}
+
+#display {
+    width: 100%;
+    height: 40px;
+    font-size: 24px;
+    text-align: right;
+    margin-bottom: 10px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+button {
+    padding: 20px;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3;
+}</style>
+    <title>Calculatrice Responsive</title>
+</head>
+<body>
+    <div class="calculator">
+        <input type="text" id="display" disabled>
+        <div class="buttons">
+            <button onclick="appendToDisplay('%')">%</button>
+            <button onclick="clearDisplay()">CE</button>
+            <button onclick="clearDisplay()">C</button>
+            <button onclick="deleteLastCharacter()">←</button>
+            <button onclick="calculateInverse()">1/x</button>
+            <button onclick="calculateSquare()">x²</button>
+            <button onclick="calculateSquareRoot()">√x</button>
+            <button onclick="appendToDisplay('/')">/</button>
+            <button onclick="appendToDisplay('7')">7</button>
+            <button onclick="appendToDisplay('8')">8</button>
+            <button onclick="appendToDisplay('9')">9</button>
+            <button onclick="appendToDisplay('*')">*</button>
+            <button onclick="appendToDisplay('4')">4</button>
+            <button onclick="appendToDisplay('5')">5</button>
+            <button onclick="appendToDisplay('6')">6</button>
+            <button onclick="appendToDisplay('-')">-</button>
+            <button onclick="appendToDisplay('1')">1</button>
+            <button onclick="appendToDisplay('2')">2</button>
+            <button onclick="appendToDisplay('3')">3</button>
+            <button onclick="appendToDisplay('+')">+</button>
+            <button onclick="toggleSign()">+/-</button>
+            <button onclick="appendToDisplay('0')">0</button>
+            <button onclick="appendDecimalPoint()">.</button>
+            <button onclick="calculateResult()">=</button>
+        </div>
+    </div>
+    <script>function appendToDisplay(value) {
+    document.getElementById('display').value += value;
+}
+
+function clearDisplay() {
+    document.getElementById('display').value = '';
+}
+
+function deleteLastCharacter() {
+    const display = document.getElementById('display');
+    display.value = display.value.slice(0, -1);
+}
+
+function calculateResult() {
+    const display = document.getElementById('display');
+    try {
+        // Remplacer 'x²' par une opération de puissance
+        display.value = display.value.replace(/x²/g, '**2');
+        // Remplacer '1/x' par l'opération de réciproque
+        display.value = display.value.replace(/1\/([^ ]+)/g, '1/$1');
+        // Remplacer '√x' par l'opération de racine carrée
+        display.value = display.value.replace(/Math.sqrt\(([^)]+)\)/g, 'Math.sqrt($1)');
+        
+        // Évaluer l'expression
+        display.value = eval(display.value);
+    } catch (error) {
+        display.value = 'Erreur';
+        setTimeout(() => {
+            clearDisplay();
+        }, 2000); // Efface l'affichage après 2 secondes
+    }
+}
+
+// Fonction pour gérer l'inversion positif/négatif
+function toggleSign() {
+    const display = document.getElementById('display');
+    if (display.value) {
+        // Si le premier caractère est un '-' on l'enlève, sinon on l'ajoute
+        display.value = display.value.charAt(0) === '-' ? display.value.slice(1) : '-' + display.value;
+    }
+}
+
+// Fonction pour ajouter un point décimal
+function appendDecimalPoint() {
+    const display = document.getElementById('display');
+    // Vérifie qu'il n'y a pas déjà un point dans l'affichage
+    if (!display.value.includes('.')) { 
+        display.value += '.';
+    }
+}
+function calculateInverse() {
+    const display = document.getElementById('display');
+    const currentValue = parseFloat(display.value);
+    if (!isNaN(currentValue) && currentValue !== 0) {
+        display.value = (1 / currentValue).toString();
+    } else {
+        display.value = 'Erreur'; // Affiche une erreur si le nombre est zéro ou non valide
+        setTimeout(() => {
+            clearDisplay();
+        }, 2000); // Efface l'affichage après 2 secondes
+    }
+}
+function calculateSquare() {
+    const display = document.getElementById('display');
+    const currentValue = parseFloat(display.value);
+    if (!isNaN(currentValue)) {
+        display.value = (currentValue ** 2).toString(); // Calcul du carré
+    } else {
+        display.value = 'Erreur'; // Affiche une erreur si la valeur n'est pas valide
+        setTimeout(() => {
+            clearDisplay();
+        }, 2000); // Efface l'affichage après 2 secondes
+    }
+}
+function calculateSquareRoot() {
+    const display = document.getElementById('display');
+    const currentValue = parseFloat(display.value);
+    if (!isNaN(currentValue) && currentValue >= 0) {
+        display.value = Math.sqrt(currentValue).toString(); // Calcul de la racine carrée
+    } else {
+        display.value = 'Erreur'; // Affiche une erreur si la valeur est négative ou non valide
+        setTimeout(() => {
+            clearDisplay();
+        }, 2000); // Efface l'affichage après 2 secondes
+    }
+}</script>
+</body>
+</html>
