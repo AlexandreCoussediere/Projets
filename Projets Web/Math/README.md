@@ -133,4 +133,4 @@ Aucune installation ni serveur n'est nécessaire.
 
 ## Auteur
 
-Projet réalisé pour proposer un outil simple de révision du Brevet des collèges en mathématiques.
+Projet réalisé par Alexandre Coussediere pour proposer un outil simple de révision du Brevet des collèges en mathématiques.
