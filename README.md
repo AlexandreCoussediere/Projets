@@ -25,17 +25,17 @@ Les projets couvrent différents domaines :
 ## Structure du dépôt
 
 ```
-.
 ├── Projets-Web
 ├──── Calculatrice responsive
 ├──── Dates histoire
 ├──── Math
+|
 ├── Projets-python
 ├──── Generateur de mot de passe
 ├──── Hangman
 ├──── ToDo List
 ├──── pygame
-├── ...
+|
 ├── LICENSE
 └── README.md
 ```
