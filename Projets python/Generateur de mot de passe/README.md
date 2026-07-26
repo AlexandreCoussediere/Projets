@@ -113,10 +113,4 @@ Voulez-vous générer un autre mot de passe ? (o/n) :
 
 ## Auteur
 
-Projet réalisé dans le cadre d'un exercice d'apprentissage de **Python**.
-
----
-
-## Licence
-
-Ce projet est libre d'utilisation à des fins pédagogiques.
+Projet réalisé par Alexandre coussediere dans le cadre d'un exercice d'apprentissage de **Python**.
