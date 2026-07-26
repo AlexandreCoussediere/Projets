@@ -114,8 +114,6 @@ index.html
 
 dans un navigateur web.
 
-Aucune installation ni serveur n'est nécessaire.
-
 ---
 
 ## Objectif pédagogique
