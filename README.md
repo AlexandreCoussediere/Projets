@@ -30,6 +30,11 @@ Les projets couvrent différents domaines :
 ├──── Calculatrice responsive
 ├──── Dates histoire
 ├──── Math
+├── Projets-python
+├──── Generateur de mot de passe
+├──── Hangman
+├──── ToDo List
+├──── pygame
 ├── ...
 ├── LICENSE
 └── README.md
